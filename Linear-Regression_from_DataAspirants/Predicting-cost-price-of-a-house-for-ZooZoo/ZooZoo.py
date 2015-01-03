@@ -6,6 +6,9 @@ Square feet is the  Area of house.
 Price is the corresponding cost of  that house.
 
 Here X values is Square_feet and y value us price
+
+Tutorial on DataAspirant Site
+Link: https://dataaspirant.wordpress.com/2014/12/20/linear-regression-implementation-in-python/
 """
 
 #Required Packages
