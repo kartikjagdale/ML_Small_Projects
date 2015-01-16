@@ -39,25 +39,22 @@ def main():
 	plt.scatter(neg[:,0],neg[:,1],c='y', marker='o', s=40,linewidth=1,label='Not Admitted')
 	plt.legend()
 
+	# Appologies No idea how to plot the boundry but will update soon as I found the solution
+	h =.02
+	xx, yy = meshgrid(arange(data[:,0].min(), data[:,0].max(),h), arange(data[:,1].min(), data[:,1].max(),h))
+	
+
+	z = logreg.decision_function(c_[xx.ravel(), yy.ravel()])
+	z = z.reshape(xx.shape)
+	print z.shape
+	
+	plt.imshow(z, interpolation='nearest', extent=(xx.min(), xx.max(), yy.min(), yy.max()), aspect='auto', origin='lower', cmap=plt.cm.PuOr_r)
+	contours = plt.contour(xx, yy, z, levels=[0], linewidths=2, linetypes='--')
+
+	plt.xticks(())
+	plt.yticks(())
 	plt.show()
 	plt.close()
-
-	# Appologies No idea how to plot the boundry but will update soon as I found the solution
-
-	# Now Plot the Boundry to the data
-	#X_min, X_max = X[ : ,0].min() -.5 , X[ : ,0].max() + .5 
-	#y_min, y_max = X[ : ,1].min() -.5 , X[ : ,1].max() + .5
-
-	#print X_min, X_max
-	#print y_min, y_max
-	#h = .02
-	#xx, yy = meshgrid(arange(X_min, X_max,h), arange(y_min, y_max, h))
-	#Z = logreg.predict(c_[xx.ravel(), yy.ravel()])
-	# Put the result into a plot
-	#Z = Z.reshape(xx.shape)
-	#plt.show()
-	#plt.close()
-	
 
 if __name__ == '__main__':
 	main()
